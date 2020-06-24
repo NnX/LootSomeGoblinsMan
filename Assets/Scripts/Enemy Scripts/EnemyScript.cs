@@ -22,7 +22,18 @@ public class EnemyScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        EnemyAI();
+        if(GameplayController.instance.isPlayerAlive)
+        {
+            EnemyAI();
+        } else
+        {
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.RUN_ANIMATION) ||
+                anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.ATTACK_ANIMATION))
+            {
+                anim.SetTrigger(MyTags.STOP_TRIGGER);
+            }
+
+        }
     }
 
     void EnemyAI()
