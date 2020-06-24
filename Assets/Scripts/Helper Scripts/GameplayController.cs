@@ -14,9 +14,12 @@ public class GameplayController : MonoBehaviour
 
     public float timerTime = 99f;
 
+    public GameObject endPanel;
+
     void Start()
     {
         isPlayerAlive = true;
+        endPanel.SetActive(false);
     }
 
     void Update()
@@ -62,5 +65,16 @@ public class GameplayController : MonoBehaviour
     {
         timerTime -= Time.deltaTime;
         timerText.text = "Time: " + timerTime.ToString("F0");
+
+        if(timerTime <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        endPanel.SetActive(true);
     }
 }
