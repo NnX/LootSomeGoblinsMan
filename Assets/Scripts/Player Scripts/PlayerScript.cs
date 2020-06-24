@@ -20,6 +20,8 @@ public class PlayerScript : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
+    public GameObject damagePoint;
+
     private void Awake()
     {
         playerBody = GetComponent<Rigidbody>();
@@ -147,5 +149,15 @@ public class PlayerScript : MonoBehaviour
                 anim.SetTrigger(MyTags.JUMP_TRIGGER);
             }
         }
+    }
+
+    void ActivateDamagePoint()
+    {
+        damagePoint.SetActive(true);
+    }
+
+    void DeactivateDamagePoint()
+    {
+        damagePoint.SetActive(false);
     }
 }

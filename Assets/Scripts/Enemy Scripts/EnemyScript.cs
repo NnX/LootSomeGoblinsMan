@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     private float enemyWatchTreshold = 70f;
     private float enemyAttackTreshold = 6f;
 
+    public GameObject damagePoint;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag(MyTags.PLAYER_TAG);
@@ -60,13 +62,13 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    void Start()
+    void ActivateDamagePoint()
     {
-        
+        damagePoint.SetActive(true);
     }
 
-    void Update()
+    void DeactivateDamagePoint()
     {
-        
+        damagePoint.SetActive(false);
     }
 }
